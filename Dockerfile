@@ -7,10 +7,9 @@ RUN unzip /tmp/ghidra_release.zip -d /tmp
 RUN mv /tmp/$(echo "$GHIDRA_VERSION" | tr '[:upper:]' '[:lower:]' | sed -e 's/build/PUBLIC/g') /tmp/ghidra_release
 
 FROM eclipse-temurin:21
-RUN mkdir /data
 COPY --from=downloader /tmp/ghidra_release /opt/ghidra
 EXPOSE 13100/tcp
-VOLUME [ "/data" ]
+VOLUME [ "/opt/ghidra/repositories" ]
 WORKDIR /opt/ghidra
 ENTRYPOINT ["/bin/bash"]
 CMD [ "/opt/ghidra/server/ghidraSvr", "console"]

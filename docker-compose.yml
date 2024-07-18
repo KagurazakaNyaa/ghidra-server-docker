@@ -7,4 +7,4 @@ services:
     ports:
       - 13100:13100/tcp
     volumes:
-      - "./data:/data"
+      - "./data:/opt/ghidra/repositories"
