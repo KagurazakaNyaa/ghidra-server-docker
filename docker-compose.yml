@@ -1,0 +1,10 @@
+services:
+  server:
+    build: .
+    image: kagurazakanyaa/ghidra-server:latest
+    network_mode: bridge
+    restart: unless-stopped
+    ports:
+      - 13100:13100/tcp
+    volumes:
+      - "./data:/data"
