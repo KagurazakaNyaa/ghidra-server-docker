@@ -5,6 +5,7 @@ services:
     network_mode: bridge
     restart: unless-stopped
     ports:
-      - 13100:13100/tcp
+      - 13100-13102:13100-13102/tcp
     volumes:
-      - "./data:/opt/ghidra/repositories"
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/opt/ghidra/repositories

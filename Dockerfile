@@ -8,8 +8,8 @@ RUN mv /tmp/$(echo "$GHIDRA_VERSION" | tr '[:upper:]' '[:lower:]' | sed -e 's/bu
 
 FROM eclipse-temurin:21
 COPY --from=downloader /tmp/ghidra_release /opt/ghidra
-EXPOSE 13100/tcp
+EXPOSE 13100-13102/tcp
 VOLUME [ "/opt/ghidra/repositories" ]
 WORKDIR /opt/ghidra
 ENTRYPOINT ["/bin/bash"]
-CMD [ "/opt/ghidra/server/ghidraSvr", "console"]
+CMD [ "/opt/ghidra/server/ghidraSvr", "console", "-autoProvision", "-u"]
