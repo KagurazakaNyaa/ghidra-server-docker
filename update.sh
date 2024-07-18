@@ -9,8 +9,8 @@ echo "$version" >currentversion
 if [[ "$currentversion" == "$version" ]]; then
     exit
 fi
-sed -i 's/^ARG GHIDRA_RELEASE_URL.*$/ARG GHIDRA_RELEASE_URL '"$download_file_url"'/i' Dockerfile
-sed -i 's/^ARG GHIDRA_VERSION.*$/ARG GHIDRA_VERSION '"$version"'/i' Dockerfile
+sed -i 's/^ARG GHIDRA_RELEASE_URL.*$/ARG GHIDRA_RELEASE_URL='"$download_file_url"'/i' Dockerfile
+sed -i 's/^ARG GHIDRA_VERSION.*$/ARG GHIDRA_VERSION='"$version"'/i' Dockerfile
 
 git config user.name "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
