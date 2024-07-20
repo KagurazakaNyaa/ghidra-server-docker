@@ -4,7 +4,7 @@ version_info=$(curl --silent -H "Authorization: Bearer ${GITHUB_TOKEN}" "${GITHU
 version=$(echo "$version_info" | jq '.tag_name' -r)
 download_file_url=$(echo "$version_info" | jq '.assets.[0].browser_download_url' -r)
 currentversion=$(cat currentversion)
-echo "currentversion:$currentversion version:$version"
+echo "currentversion:$currentversion version:$version download_file_url:$download_file_url"
 echo "$version" >currentversion
 if [[ "$currentversion" == "$version" ]]; then
     exit
