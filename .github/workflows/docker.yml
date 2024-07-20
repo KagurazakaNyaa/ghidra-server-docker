@@ -27,7 +27,8 @@ jobs:
         with:
           images: kagurazakanyaa/ghidra-server
           tags: |
-            type=match,pattern=Ghidra_(\d.\d.\d)_build
+            type=ref,event=tag
+            type=match,pattern=Ghidra_(.*)_build,group=1
 
       - name: Build and push
         id: docker_build
