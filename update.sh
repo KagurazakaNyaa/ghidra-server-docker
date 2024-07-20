@@ -2,9 +2,8 @@
 GITHUB_API_URL="https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest"
 version_info=$(curl --silent -H "Authorization: Bearer ${GITHUB_TOKEN}" "${GITHUB_API_URL}")
 version=$(echo "$version_info" | jq '.tag_name' -r)
-download_file_url=$(echo "$version_info" | jq '.assets.[0].browser_download_url' -r)
+download_file_url=$(echo "$version_info" | jq '.assets | .[0] | .browser_download_url' -r)
 currentversion=$(cat currentversion)
-echo "$version_info" | jq '.assets | .[0]' -r
 echo "currentversion:$currentversion version:$version download_file_url:$download_file_url"
 echo "$version" >currentversion
 if [[ "$currentversion" == "$version" ]]; then
