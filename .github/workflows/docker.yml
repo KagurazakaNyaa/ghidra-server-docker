@@ -26,6 +26,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: kagurazakanyaa/ghidra-server
+          tags: |
+            type=match,pattern=Ghidra_(\d.\d.\d)_build
 
       - name: Build and push
         id: docker_build
