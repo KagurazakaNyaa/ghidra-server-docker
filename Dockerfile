@@ -1,6 +1,6 @@
 FROM alpine:3 AS downloader
-ARG GHIDRA_RELEASE_URL=https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0_build/ghidra_12.0_PUBLIC_20251205.zip
-ARG GHIDRA_VERSION=Ghidra_12.0_build
+ARG GHIDRA_RELEASE_URL=https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.1_build/ghidra_12.0.1_PUBLIC_20260114.zip
+ARG GHIDRA_VERSION=Ghidra_12.0.1_build
 RUN apk add --no-cache curl wget unzip
 RUN curl -L ${GHIDRA_RELEASE_URL} -o /tmp/ghidra_release.zip
 RUN unzip /tmp/ghidra_release.zip -d /tmp
